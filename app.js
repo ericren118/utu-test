@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use('/', router);
 
 // Create database and connect to mongodb use mongoose
-mongoose.connect('mongodb+srv://admin-eric:Django1988@cluster0.acztg.mongodb.net/cryptoDB?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://username:password@cluster0.acztg.mongodb.net/cryptoDB?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
