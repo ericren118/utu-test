@@ -1,0 +1,13 @@
+body {
+    background-color: #D3D3D3;
+}
+
+h1 {
+    text-align: center;
+    margin: 100px;
+}
+
+
+.dataLabel {
+    display: inline-block;
+}

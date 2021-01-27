@@ -1,0 +1,68 @@
+<div class="container">
+    <span class="dataLabel">The date is: </span>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Date
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form class="item" action="/" method="post">
+                <% allDates.forEach(function(date) { %>
+                <button class="dropdown-item" type="submit" name="dateList" value='<%= date %>'><%= date %></button>
+                <% }) %>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Crypto Currency</th>
+                <th scope="col">Open</th>
+                <th scope="col">High</th>
+                <th scope="col">Low</th>
+                <th scope="col">Close</th>
+                <th scope="col">1h</th>
+                <th scope="col">24h</th>
+                <th scope="col">7d</th>
+                <th scope="col">Volume</th>
+                <th scope="col">Market Cap</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                <% for (var i=0; i < dayList.length; i++) { %>
+                    <% try{ %>
+                        <% var change1 = ((dayList[i]['close'] - down1[i]['close']) / dayList[i]['close'] * 100).toFixed(2); %>
+                        <% var change7 = ((dayList[i]['close'] - down7[i]['close']) / dayList[i]['close'] * 100).toFixed(2); %>
+                        <% var change30 = ((dayList[i]['close'] - down30[i]['close']) / dayList[i]['close'] * 100).toFixed(2); %>
+
+                        <tr>
+                            <th scope="row"><%= i+1 %></th>
+                            <td><%= dayList[i]['currency'] %></td>
+                            <td><%= dayList[i]['open'] %></td>
+                            <td><%= dayList[i]['high'] %></td>
+                            <td><%= dayList[i]['low'] %></td>
+                            <td><%= dayList[i]['close'] %></td>
+                            <td><%= change1 %></td>
+                            <td><%= change7 %></td>
+                            <td><%= change30 %></td>
+                            <td><%= dayList[i]['volume'] %></td>
+                            <td><%= dayList[i]['marketCap'] %></td>
+                        </tr>
+
+                    <% } catch(err) { %>
+                        <% console.log(err); %>
+                    <% } %>
+
+                <% } %>
+
+        </tbody>
+    </table>
+</div>
